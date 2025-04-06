@@ -151,6 +151,11 @@ async function postResources(
   });
 }
 
+export async function runHook(url: string) {
+  const data = await resourceAction(`${url}?runhookafter=true`, "GET");
+  return await data.json();
+}
+
 function moveCopy(
   items: any[],
   copy = false,
