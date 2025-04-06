@@ -56,8 +56,9 @@ func tusPostHandler() handleFunc {
 		if err != nil {
 			return errToStatus(err), err
 		}
-		if err := openFile.Close(); err != nil {
-			return errToStatus(err), err
+		closeErr := openFile.Close()
+		if closeErr != nil {
+			return errToStatus(closeErr), closeErr
 		}
 
 		err = d.RunHookBefore(func() error {

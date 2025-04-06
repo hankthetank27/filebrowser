@@ -40,7 +40,6 @@ var resourceGetHandler = withUser(func(w http.ResponseWriter, r *http.Request, d
 		return renderJSON(w, r, file)
 	}
 
-  
 	if runhookafter := r.URL.Query().Get("runhookafter"); runhookafter != "" {
 		err := d.RunHookAfter(func() error {
 			return nil

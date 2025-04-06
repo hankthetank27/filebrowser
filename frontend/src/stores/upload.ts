@@ -163,7 +163,7 @@ export const useUploadStore = defineStore("upload", {
       this.processUploads();
     },
     async finishUpload(item: UploadItem) {
-      await api.runHook(item.path).catch(e => `Error running hook: ${e}`);
+      await api.runHook(item.path).catch((e) => `Error running hook: ${e}`);
       this.setProgress({ id: item.id, loaded: item.file.size > 0 });
       this.removeJob(item.id);
       this.processUploads();

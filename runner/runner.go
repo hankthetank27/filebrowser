@@ -17,8 +17,7 @@ type Runner struct {
 	*settings.Settings
 }
 
-
-func (r *Runner) RunHookBefore(fn func() error, evt, path, dst string, user *users.User) error {
+func (r *Runner) RunHookBefore(_ func() error, evt, path, dst string, user *users.User) error {
 	path = user.FullPath(path)
 	dst = user.FullPath(dst)
 
@@ -34,9 +33,8 @@ func (r *Runner) RunHookBefore(fn func() error, evt, path, dst string, user *use
 	}
 	return nil
 }
- 
 
-func (r *Runner) RunHookAfter(fn func() error, evt, path, dst string, user *users.User) error {
+func (r *Runner) RunHookAfter(_ func() error, evt, path, dst string, user *users.User) error {
 	path = user.FullPath(path)
 	dst = user.FullPath(dst)
 	if r.Enabled {
@@ -49,6 +47,7 @@ func (r *Runner) RunHookAfter(fn func() error, evt, path, dst string, user *user
 			}
 		}
 	}
+
 	return nil
 }
 
